@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CS50p Weather App</title>
+    </head>
+    <body>
+        <h1>Chris Taylor's CS50p Weather App</h1>
+        <form method="POST">
+            <input type="text" name="city" placeholder="Enter city">
+            <select name="units">
+                <option value="metric">Celsius</option>
+                <option value="imperial">Fahrenheit</option>
+            </select>
+            <button type="submit">Get Weather</button>
+        </form>
+        {% if temperature and wind_speed and city %}
+            <h2>The temperature in {{ city }} is {{ temperature }}° and the wind speed is {{ wind_speed }}.</h2>
+        {% endif %}
+    </body>
+</html>
