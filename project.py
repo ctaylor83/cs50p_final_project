@@ -2,20 +2,20 @@ from flask import Flask, render_template, request
 import requests
 
 app = Flask(__name__)
-def main():
+def main(): # The main function will start the flask server
     app.run(Debug=True)
 
 @app.route('/', methods=['GET', 'POST'])
 
 def index():
-    if requests.method == 'POST':
-        city = request.form['city']
-        units = request.form['units']
+    if requests.method == 'POST': # This checks if the user has made the request via the web page 'index.html'
+        city = request.form['city'] # Pulls out the city information input by the user & adds to the url for the api request
+        units = request.form['units'] # This adds the unit information selected by the user via the dropdown on the web page & adds to the url for the api request
         weather_data = get_weather(city, units)
         temperature = get_temperature(weather_data)
         wind_speed = get_wind_speed(weather_data)
         return render_template('index.html', temperature=temperature, wind_speed=wind_speed, city=city)
-        else:
+    else:
         return render_template('index.html')
 
 def get_weather(city: str, units: str = 'metric'):
