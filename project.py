@@ -2,14 +2,12 @@ from flask import Flask, render_template, request
 import requests
 import os
 
-current_dir = os.path.abspath(os.path.dirname(__file__))
-
-app = Flask(__name__, template_folder=current_dir)
-
+app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 
 def index():
+    app.logger.debug('Processing default request')
     if request.method == 'POST': # This checks if the user has made the request via the web page 'index.html'
         city = request.form['city'] # Pulls out the city information input by the user & adds to the url for the api request
         units = request.form['units'] # This adds the unit information selected by the user via the dropdown on the web page & adds to the url for the api request
