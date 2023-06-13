@@ -21,3 +21,11 @@ def test_get_temperature():
 def test_get_wind_speed():
     weather_data = {'wind': {'speed': 5}}
     assert project.get_wind_speed(weather_data) == 5
+
+def test_get_weather_info():
+    weather_data = {
+        'weather': [
+            {'description': 'light rain', 'icon': '10d'}
+        ],
+    }
+    assert get_weather_info(weather_data) == ('light rain', '10d')

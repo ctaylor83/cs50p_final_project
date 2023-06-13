@@ -14,8 +14,9 @@
             </select>
             <button type="submit">Get Weather</button>
         </form>
-        {% if temperature and wind_speed and city %}
-            <h2>The temperature in {{ city }} is {{ temperature }}° and the wind speed is {{ wind_speed }}.</h2>
+        {% if temperature and wind_speed and city and weather_description and weather_icon %}
+            <img src="http://openweathermap.org/img/w/{{ weather_icon }}.png" alt="{{ weather_description }}">
+            <h2>The weather in {{ city }} is {{ weather_description }}, current temprature is {{ temperature }}° and the wind speed is {{ wind_speed }}.</h2>
         {% endif %}
     </body>
 </html>

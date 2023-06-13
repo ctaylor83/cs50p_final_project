@@ -11,9 +11,13 @@ def index():
         city = request.form['city'] # Pulls out the city information input by the user & adds to the url for the api request
         units = request.form['units'] # This adds the unit information selected by the user via the dropdown on the web page & adds to the url for the api request
         weather_data = get_weather(city, units)
+        if weather_data.get('message'):  # Check if there's an error message in the response
+            flash(weather_data['message'], 'error')
+            return redirect(url_for('index'))  # Redirect back to index page
         temperature = get_temperature(weather_data)
         wind_speed = get_wind_speed(weather_data)
-        return render_template('index.html', temperature=temperature, wind_speed=wind_speed, city=city)
+        weather_description, weather_icon = get_weather_info(weather_data)
+        return render_template('index.html', temperature=temperature, wind_speed=wind_speed, city=city, weather_description=weather_description, weather_icon=weather_icon)
     else:
         return render_template('index.html')
 
@@ -38,6 +42,10 @@ def get_temperature(weather_data: dict): # extracts the weather info from the we
 
 def get_wind_speed(weather_data: dict): # extracts the wind speed data from the weather data dictionary
     return weather_data['wind']['speed'] 
+
+def get_weather_info(weather_data: dict):
+    return weather_data['weather'][0]['description'], weather_data['weather'][0]['icon']
+
 
 if __name__ == '__main__':
     main()
