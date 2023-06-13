@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 import requests
 
 app = Flask(__name__)
@@ -25,12 +25,18 @@ def get_weather(city: str, units: str = 'metric'): # Note that metric is selecte
         API_KEY = file.read().strip() # Reads the API key from the file
     url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units={units}'
     response = requests.get(url)
-    return response.json()
+    data = response.json()
 
-def get_temperature(weather_data: dict):
+    if response.status_code != 200: # If the user inputs an incorrect city this error should flag
+        flash(data.get('message', 'Invalid city, unable to get weather data.')) # Flash the error message from the API or a generic error message
+        return None
+
+    return data
+
+def get_temperature(weather_data: dict): # extracts the weather info from the weather data dictionary
     return weather_data['main']['temp']
 
-def get_wind_speed(weather_data: dict):
+def get_wind_speed(weather_data: dict): # extracts the wind speed data from the weather data dictionary
     return weather_data['wind']['speed'] 
 
 if __name__ == '__main__':
