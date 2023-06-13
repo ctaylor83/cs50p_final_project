@@ -1,7 +1,11 @@
 from flask import Flask, render_template, request
 import requests
+import os
 
-app = Flask(__name__)
+current_dir = os.path.abspath(os.path.dirname(__file__))
+
+app = Flask(__name__, template_folder=current_dir)
+
 
 @app.route('/', methods=['GET', 'POST'])
 
