@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F3F3F3;
+    padding: 30px;
+    color: #333;
+}
+
+h1 {
+    color: #446CB3;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #446CB3;
+    color: white;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+h2 {
+    margin-top: 20px;
+    color: #26A65B;
+}
