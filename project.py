@@ -3,10 +3,8 @@ import requests
 
 app = Flask(__name__)
 
-def main(): # The main function will start the flask server
-    app.run(debug=True)
-
 @app.route('/', methods=['GET', 'POST'])
+
 def index():
     if request.method == 'POST': # This checks if the user has made the request via the web page 'index.html'
         city = request.form['city'] # Pulls out the city information input by the user & adds to the url for the api request
@@ -14,9 +12,12 @@ def index():
         weather_data = get_weather(city, units)
         temperature = get_temperature(weather_data)
         wind_speed = get_wind_speed(weather_data)
-        return render_template('index.html', temperature=temperature, wind_speed=wind_speed, city=city)
+        return render_template('index.html', temperature="...", wind_speed="...", city=city)
     else:
         return render_template('index.html')
+
+def main(): # The main function will start the flask server
+    app.run(debug=True)
 
 def get_weather(city: str, units: str = 'metric'): # Note that metric is selected by default if ever the user did not select a unit of measurement
     with open('openweatherapi.txt', 'r') as file: # Calling the open weather api key text file
