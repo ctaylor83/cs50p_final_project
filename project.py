@@ -12,7 +12,7 @@ def index():
         weather_data = get_weather(city, units)
         temperature = get_temperature(weather_data)
         wind_speed = get_wind_speed(weather_data)
-        return render_template('index.html', temperature="...", wind_speed="...", city=city)
+        return render_template('index.html', temperature=temperature, wind_speed=wind_speed, city=city)
     else:
         return render_template('index.html')
 
