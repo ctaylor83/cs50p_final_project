@@ -1,40 +1,45 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #F3F3F3;
-    padding: 30px;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
     color: #333;
 }
 
 h1 {
-    color: #446CB3;
+    text-align: center;
+    padding: 20px 0;
 }
 
 form {
-    margin-top: 20px;
+    width: 300px;
+    margin: 0 auto;
 }
 
-input[type=text], select {
+.weather-box {
+    width: 300px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    background-color: #add8e6;
+}
+
+.weather-text h2 {
+    margin: 0;
     width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
 }
 
-button {
-    background-color: #446CB3;
-    color: white;
-    padding: 15px 20px;
-    margin: 10px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+.weather-icon img {
+    width: 50px;
+    height: 50px;
 }
 
-button:hover {
-    opacity: 0.8;
-}
-
-h2 {
-    margin-top: 20px;
-    color: #26A65B;
+.alert {
+    color: red;
+    font-size: 20px;
 }
