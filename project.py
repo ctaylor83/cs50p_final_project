@@ -12,13 +12,14 @@ def index():
         units = request.form['units'] # This adds the unit information selected by the user via the dropdown on the web page & adds to the url for the api request
         weather_data = get_weather(city, units)
 
-        if not city: # Check if the city name is empty
+        if not city: # Check if the city name is empty & return a message to the user
             flash('Please enter a city name')
             return redirect(url_for('index'))
 
-        if weather_data is None or weather_data.get('cod') == '404':
+        if weather_data is None or weather_data.get('cod') == '404': # Error handling where city input is invalid
             flash('City not found, please try again')
             return redirect(url_for('index'))
+        
         else:
             temperature = get_temperature(weather_data)
             wind_speed = get_wind_speed(weather_data)
@@ -46,7 +47,6 @@ def get_wind_speed(weather_data: dict): # extracts the wind speed data from the 
 
 def get_weather_info(weather_data: dict):
     return weather_data['weather'][0]['description'], weather_data['weather'][0]['icon']
-
 
 if __name__ == '__main__':
     app.secret_key = 'cs50pyweather' # Secret key set to enable Flask flash function
