@@ -12,10 +12,13 @@ def index():
         units = request.form['units'] # This adds the unit information selected by the user via the dropdown on the web page & adds to the url for the api request
         weather_data = get_weather(city, units)
 
-        if weather_data is None:  # Check if there's an error message in the response
-            flash('City not found, please try again') # Warn the user that they have selected an incorrect city
-            return redirect(url_for('index'))  # Redirect back to index page
-        
+        if not city: # Check if the city name is empty
+            flash('Please enter a city name')
+            return redirect(url_for('index'))
+
+        if weather_data is None or weather_data.get('cod') == '404':
+            flash('City not found, please try again')
+            return redirect(url_for('index'))
         else:
             temperature = get_temperature(weather_data)
             wind_speed = get_wind_speed(weather_data)
