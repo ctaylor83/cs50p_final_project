@@ -1,5 +1,5 @@
     # WeatherPy
-    #### Video Demo:  <URL HERE>
+    #### Video Demo:  https://www.youtube.com/watch?v=uTcCcI9wn7k
     #### Description: A simple web based app using Python and Flask.
 
     On running the project.py file, a local server is run that the user can open via holding down Ctrl & Clicking on the link.
