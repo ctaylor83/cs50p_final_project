@@ -14,7 +14,8 @@
     * project.py - This is the main file for the project, located in the root directory.  This is used to run the program.
     * test_project.py - Pytest file with tests written to test out various functinos within the project file.
     * requirements.txt - This lists out the Python packages that is required in order to run this projext
-    *openweatherapi.txt - This contains the api key for OpenWeatherMap.  project.py calls on this file to extract the api key as part of the url when requesting the weather for the user's specified location.
+    *openweatherapi.txt - This contains the api key for OpenWeatherMap.  project.py calls on this file to extract the api key as part of the url when requesting the weather for the user's specified location.  
+    NOTE - to avoid abuse of my own Openweater API key, it has been removed.  To use this register and OpenWeather & stick your API key in this file.
     * templates/index.html - This contains the basic html file for the web page that the user views.  This is contained in the templates folder for Flask to access.
     * static/styles.css - This contains the basic css styles sheet that is used alongside index.html to add a little colour to the page!
 
